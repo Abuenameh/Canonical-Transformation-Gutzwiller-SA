@@ -106,7 +106,7 @@ __global__ void cusimann_kernel(curandState *state, real T, unsigned int pos_min
 
 	// This if is evaluated at compile time
 	if (isFirstTime)
-		f_actual = f(&(d_points[pos2Dto1D(global_tid,0,CUSIMANN_n)]),CUSIMANN_n,f_data);
+				f_actual = f(&(d_points[pos2Dto1D(global_tid,0,CUSIMANN_n)]),CUSIMANN_n,f_data);
 	else {	
 	
 		for(c=0;c<CUSIMANN_n;c++)

@@ -61,7 +61,7 @@ public:
 			complex_t E5j1k1 = complex_t::zero();
 			complex_t E5j2k2 = complex_t::zero();
 
-			for (int n = 0; n <= nmax; n++) {
+			/*for (int n = 0; n <= nmax; n++) {
 				E0 += (0.5 * U[i] * n * (n - 1) - mu * n) * ~f[i][n]
 					* f[i][n];
 
@@ -190,7 +190,7 @@ public:
 						}
 					}
 				}
-			}
+			}*/
 
 			Ec += E0 / norm[i];
 
@@ -212,7 +212,6 @@ public:
 			Ec += E5j2k2 / (norm[i] * norm[j2] * norm[k2]);
 		}
 
-//		printf("%f\n", Ec.real());
 		return Ec.real();
 	}
 };
