@@ -49,6 +49,7 @@ int main(int argc, char** argv) {
 	parms.U = d_U;
 	parms.J = d_J;
 	parms.mu = 0.5;
+	parms.theta = 0;
 	checkCudaErrors(cudaMalloc(&d_parms, sizeof(parameters)));
 	checkCudaErrors(cudaMemcpy(d_parms, &parms, sizeof(parameters), cudaMemcpyHostToDevice));
 
