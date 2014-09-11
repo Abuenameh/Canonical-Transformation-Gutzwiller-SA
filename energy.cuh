@@ -212,6 +212,7 @@ public:
 			Ec += E5j2k2 / (norm[i] * norm[j2] * norm[k2]);
 		}
 
+//		printf("%f\n", Ec.real());
 		return Ec.real();
 	}
 };
