@@ -25,6 +25,18 @@ int main(int argc, char** argv) {
 	for(i=0;i<n;i++)
 		ub[i] = 1;
 
+		double f_nelderMead_minimum;
+		double *nelderMead_minimum = (double*)malloc(n*sizeof(double));
+		nelderMead_optimize(n, lb, ub, cusimann_minimum, f_nelderMead, NULL, nelderMead_minimum, &f_nelderMead_minimum);
+
+		printf("nelderMead_minimum = [");
+		for(i=0;i<n;i++)
+			printf(" %f", nelderMead_minimum[i]);
+		printf(" ]\n");
+		printf("f(nelderMead_minimum) = %lf\n", f_nelderMead_minimum);
+
+		return 0;
+
 	unsigned int n_threads_per_block = 256;
 	unsigned int n_blocks = 64;
 

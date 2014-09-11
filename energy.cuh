@@ -217,4 +217,9 @@ public:
 	}
 };
 
+double f_nelderMead(unsigned int n, const double *x, double *grad, void *f_data){
+	return Energy<double>()(x,n,f_data);
+}
+
+
 #endif /* ENERGY_HPP_ */
