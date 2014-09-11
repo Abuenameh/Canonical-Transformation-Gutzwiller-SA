@@ -12,7 +12,7 @@
 #include "configuration.h"
 
 #define L 1
-#define nmax 1
+#define nmax 7
 #define dim (nmax+1)
 
 __host__ __device__ inline int mod(int i) {
