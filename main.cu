@@ -29,7 +29,7 @@ int main(int argc, char** argv) {
 	for (i = 0; i < n; i++)
 		ub[i] = 1;
 
-	unsigned int n_threads_per_block = 512;//256;
+	unsigned int n_threads_per_block = 256;//512;//256;
 	unsigned int n_blocks = 64;
 
 	real U[L], J[L];
