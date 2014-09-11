@@ -125,6 +125,12 @@ template <typename T2, typename T> struct ALIGN(8) _cudacomplex {
         return result;
     }
 
+    M_HOSTDEVICE _cudacomplex<T2, T> operator+=(const _cudacomplex<T2, T> REF(b)) {
+    	value.x += b.value.x;
+    	value.y += b.value.y;
+        return (*this);
+    }
+
     // add scalar to complex
     M_HOSTDEVICE _cudacomplex<T2, T> operator+(const T REF(b)) const {
         _cudacomplex<T2, T> result = {
@@ -137,6 +143,12 @@ template <typename T2, typename T> struct ALIGN(8) _cudacomplex {
         _cudacomplex<T2, T> result = {
             { value.x - b.value.x, value.y - b.value.y}};
         return result;
+    }
+
+    M_HOSTDEVICE _cudacomplex<T2, T> operator-=(const _cudacomplex<T2, T> REF(b)) {
+    	value.x -= b.value.x;
+    	value.y -= b.value.y;
+        return (*this);
     }
 
     // negate a complex number
@@ -204,7 +216,7 @@ template <typename T2, typename T> struct ALIGN(8) _cudacomplex {
     }
 
     // complex norm
-    M_HOSTDEVICE T norm() {
+    M_HOSTDEVICE T norm() const {
         T result = value.x * value.x + value.y * value.y;
         return result;
     }

@@ -23,12 +23,12 @@ public:
 		real mu = parms->mu;
 		real theta = parms->theta;
 
-		complex_t expth = complextype<T>::make_complex(cos(theta), sin(theta));
+		complex_t expth = complex_t::make_cudacomplex(cos(theta), sin(theta));//complextype<T>::make_complex(cos(theta), sin(theta));
 		complex_t expmth = ~expth;
 		complex_t exp2th = expth * expth;
 		complex_t expm2th = ~exp2th;
 
-		complex_t Ec = 0;
+		complex_t Ec = complex_t::zero();
 
 		const complex_t* f[L];
 		T norm[L];
@@ -47,19 +47,19 @@ public:
 			int j2 = mod(i + 1);
 			int k2 = mod(i + 2);
 
-			complex_t E0 = 0;
-			complex_t E1j1 = 0;
-			complex_t E1j2 = 0;
-			complex_t E2j1 = 0;
-			complex_t E2j2 = 0;
-			complex_t E3j1 = 0;
-			complex_t E3j2 = 0;
-			complex_t E4j1j2 = 0;
-			complex_t E4j1k1 = 0;
-			complex_t E4j2k2 = 0;
-			complex_t E5j1j2 = 0;
-			complex_t E5j1k1 = 0;
-			complex_t E5j2k2 = 0;
+			complex_t E0 = complex_t::zero();
+			complex_t E1j1 = complex_t::zero();
+			complex_t E1j2 = complex_t::zero();
+			complex_t E2j1 = complex_t::zero();
+			complex_t E2j2 = complex_t::zero();
+			complex_t E3j1 = complex_t::zero();
+			complex_t E3j2 = complex_t::zero();
+			complex_t E4j1j2 = complex_t::zero();
+			complex_t E4j1k1 = complex_t::zero();
+			complex_t E4j2k2 = complex_t::zero();
+			complex_t E5j1j2 = complex_t::zero();
+			complex_t E5j1k1 = complex_t::zero();
+			complex_t E5j2k2 = complex_t::zero();
 
 			for (int n = 0; n <= nmax; n++) {
 				E0 += (0.5 * U[i] * n * (n - 1) - mu * n) * ~f[i][n]
@@ -144,34 +144,34 @@ public:
 
 					for (int m = 1; m <= nmax; m++) {
 						if (n != m - 1 && n < nmax) {
-							E5j1j2 += 0.5
+							E5j1j2 +=0.5
 								* (J[j1] * J[i] * exp2th / eps(U, i, j1, n, m))
 								* g(n, m) * g(m - 1, n + 1) * ~f[i][n + 1]
 								* ~f[j1][m - 1] * ~f[j2][m] * f[i][n + 1]
 								* f[j1][m] * f[j2][m - 1];
-							E5j1j2 += 0.5
+							E5j1j2 +=0.5
 								* (J[i] * J[j1] * expm2th / eps(U, i, j2, n, m))
 								* g(n, m) * g(m - 1, n + 1) * ~f[i][n + 1]
 								* ~f[j2][m - 1] * ~f[j1][m] * f[i][n + 1]
 								* f[j2][m] * f[j1][m - 1];
 
-							E5j1k1 += 0.5
+							E5j1k1 +=0.5
 								* (J[j1] * J[k1] * exp2th / eps(U, i, j1, n, m))
 								* g(n, m) * g(m - 1, n + 1) * ~f[i][n + 1]
 								* ~f[j1][m - 1] * ~f[k1][n] * f[i][n]
 								* f[j1][m - 1] * f[k1][n + 1];
-							E5j2k2 += 0.5
+							E5j2k2 +=0.5
 								* (J[i] * J[j2] * expm2th / eps(U, i, j2, n, m))
 								* g(n, m) * g(m - 1, n + 1) * ~f[i][n + 1]
 								* ~f[j2][m - 1] * ~f[k2][n] * f[i][n]
 								* f[j2][m - 1] * f[k2][n + 1];
 
-							E5j1j2 -= 0.5
+							E5j1j2 -=0.5
 								* (J[j1] * J[i] * exp2th / eps(U, i, j1, n, m))
 								* g(n, m) * g(m - 1, n + 1) * ~f[i][n]
 								* ~f[j1][m - 1] * ~f[j2][m] * f[i][n] * f[j1][m]
 								* f[j2][m - 1];
-							E5j1j2 -= 0.5
+							E5j1j2 -=0.5
 								* (J[i] * J[j1] * expm2th / eps(U, i, j2, n, m))
 								* g(n, m) * g(m - 1, n + 1) * ~f[i][n]
 								* ~f[j2][m - 1] * ~f[j1][m] * f[i][n] * f[j2][m]
