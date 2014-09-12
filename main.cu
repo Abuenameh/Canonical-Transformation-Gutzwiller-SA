@@ -15,7 +15,7 @@
 int main(int argc, char** argv) {
 	time_t start = time(NULL);
 
-	real T_0 = 1000, T_min = 0.1;
+	real T_0 = 1000, T_min = 0.01;
 	const unsigned int n = 2 * L * dim, N = 100;
 	const real rho = 0.99;
 	size_t sizeFD = n * sizeof(real);
@@ -29,7 +29,7 @@ int main(int argc, char** argv) {
 	for (i = 0; i < n; i++)
 		ub[i] = 1;
 
-	unsigned int n_threads_per_block = 256;//512;//256;
+	unsigned int n_threads_per_block = 128;//512;//256;
 	unsigned int n_blocks = 64;
 
 	real U[L], J[L];
