@@ -89,7 +89,7 @@ int main(int argc, char** argv) {
 
 	time_t end = time(NULL);
 
-	printf("Runtime: %ld", end-start);
+	printf("Runtime: %ld s\n", end-start);
 
 	return 0;
 }
