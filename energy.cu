@@ -43,7 +43,7 @@ __host__ __device__ static inline T Sqr2(T x) {
 	return x * x * x * x;
 }
 
-template<class T> __host__ __device__ energy0(const T *f, unsigned int n,
+template<class T> __host__ __device__ double energy0(const T *f, unsigned int n,
 	void *f_data) {
 	parameters* parms = (parameters*) f_data;
 	real* U = parms->U;
