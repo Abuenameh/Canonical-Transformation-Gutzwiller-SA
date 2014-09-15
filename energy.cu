@@ -67,7 +67,8 @@ template<class T>
 //		}
 //		printf("\n");
 //		printf("%.10f %.10f %.10f %.10f %.10f\n", E, f[0], f[1], f[2], f[3]);
-		printf("%f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f \n", E, norm1, norm2, norm3, norm4, norm5, norm6, norm7, norm8, norm9, norm10, norm11, norm12, norm13, norm14, norm15, norm16, norm17, norm18, norm19, norm20, norm21, norm22, norm23, norm24, norm25, norm26, norm27, norm28, norm29, norm30, norm31, norm32, norm33, norm34, norm35, norm36, norm37, norm38, norm39, norm40, norm41, norm42, norm43, norm44, norm45, norm46, norm47, norm48, norm49, norm50);
+//		printf("%f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f \n", E, norm1, norm2, norm3, norm4, norm5, norm6, norm7, norm8, norm9, norm10, norm11, norm12, norm13, norm14, norm15, norm16, norm17, norm18, norm19, norm20, norm21, norm22, norm23, norm24, norm25, norm26, norm27, norm28, norm29, norm30, norm31, norm32, norm33, norm34, norm35, norm36, norm37, norm38, norm39, norm40, norm41, norm42, norm43, norm44, norm45, norm46, norm47, norm48, norm49, norm50);
+		printf("%f %f %f %f %f %f %f %f %f %f %f \n", E, norm1, norm2, norm3, norm4, norm5, norm6, norm7, norm8, norm9, norm10);
 //		printf("%f\n", E);
 		return E;
 //#include "energyret.cuh"
