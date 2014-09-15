@@ -11,7 +11,7 @@
 //#include "complex.hpp"
 #include "configuration.h"
 
-#define L 1
+#define L 50
 #define nmax 7
 #define dim (nmax+1)
 
