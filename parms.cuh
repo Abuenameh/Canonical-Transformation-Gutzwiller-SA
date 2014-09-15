@@ -1,0 +1,9 @@
+	parameters* parms = (parameters*) f_data;
+	real* U = parms->U;
+	real* J = parms->J;
+	real mu = parms->mu;
+	real theta = parms->theta;
+	real costh = parms->costh;
+	real sinth = parms->sinth;
+	real cos2th = parms->cos2th;
+	real sin2th = parms->sin2th;

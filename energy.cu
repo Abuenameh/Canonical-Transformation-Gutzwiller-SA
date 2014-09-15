@@ -45,18 +45,17 @@ __host__ __device__ static inline T Sqr2(T x) {
 
 template<class T> __host__ __device__ double energy0(const T *f, unsigned int n,
 	void *f_data) {
-	parameters* parms = (parameters*) f_data;
-	real* U = parms->U;
-	real* J = parms->J;
-	real mu = parms->mu;
-	real theta = parms->theta;
-	real costh = parms->costh;
-	real sinth = parms->sinth;
-	real cos2th = parms->cos2th;
-	real sin2th = parms->sin2th;
-
+#include "parms.cuh"
 #include "vars.cuh"
 #include "return0.cuh"
+	return E;
+}
+
+template<class T> __host__ __device__ double energy1(const T *f, unsigned int n,
+	void *f_data) {
+#include "parms.cuh"
+#include "vars.cuh"
+#include "return1.cuh"
 	return E;
 }
 
