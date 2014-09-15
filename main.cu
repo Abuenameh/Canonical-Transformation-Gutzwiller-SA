@@ -17,7 +17,7 @@ int main(int argc, char** argv) {
 	time_t start = time(NULL);
 
 	real T_0 = 1000, T_min = 0.01;
-	const unsigned int n = 2 * L * dim, N = 100;
+	const unsigned int n = 2 * L * dim, N = 1;//00;
 	const real rho = 0.99;
 	size_t sizeFD = n * sizeof(real);
 	real *lb, *ub, *cusimann_minimum = (real*) malloc(sizeFD),
@@ -51,15 +51,22 @@ int main(int argc, char** argv) {
 	checkCudaErrors(cudaMalloc(&d_J, L*sizeof(real)));
 	checkCudaErrors(cudaMemcpy(d_J, J, L*sizeof(real), cudaMemcpyHostToDevice));
 
+	real theta = 0;
+
 	parms.U = d_U;
 	parms.J = d_J;
 	parms.mu = 0.5;
-	parms.theta = 0;
+	parms.theta = theta;
+	parms.costh = cos(theta);
+	parms.sinth = sin(theta);
+	parms.cos2th = cos(2*theta);
+	parms.sin2th = sin(2*theta);
 	checkCudaErrors(cudaMalloc(&d_parms, sizeof(parameters)));
 	checkCudaErrors(
 			cudaMemcpy(d_parms, &parms, sizeof(parameters),
 					cudaMemcpyHostToDevice));
 
+	printf("Optimize\n");
 	cusimann_optimize(n_threads_per_block, n_blocks, T_0, T_min, N, rho, n, lb,
 			ub, Energy<real>(), d_parms, cusimann_minimum, &f_cusimann_minimum);
 
