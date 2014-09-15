@@ -8,7 +8,7 @@
 #ifndef GUTZWILLER_HPP_
 #define GUTZWILLER_HPP_
 
-#include "complex.hpp"
+//#include "complex.hpp"
 #include "configuration.h"
 
 #define L 1
@@ -32,9 +32,24 @@ struct parameters {
 	real mu;
 	real* J;
     real theta;
+    real costh;
+    real sinth;
+    real cos2th;
+    real sin2th;
 };
 
+template<class T>
+class Energy {
+public:
+	__host__ __device__ T operator()(const T *f, unsigned int n,
+			void *f_data) const;
 
+	__host__ __device__ T operator()(const T *x, unsigned int n,
+			void *f_data, int qwe) const;
+};
+
+double f_nelderMead(unsigned int n, const double *x, double *grad,
+		void *f_data);
 
 
 #endif /* GUTZWILLER_HPP_ */

@@ -898,7 +898,3 @@ real U_46_2 = Sqr(U[46]);
 real U_47_2 = Sqr(U[47]);
 real U_48_2 = Sqr(U[48]);
 real U_49_2 = Sqr(U[49]);
-real costh = cos(theta);
-real cos2th = cos(2*theta);
-real sinth = sin(theta);
-real sin2th = sin(2*theta);

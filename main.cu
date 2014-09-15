@@ -10,7 +10,8 @@
 #include "cusimann.cuh"
 #include "nelderMead.h"
 #include "gutzwiller.hpp"
-#include "energy.cuh"
+//#include "energy.cuh"
+
 
 int main(int argc, char** argv) {
 	time_t start = time(NULL);
