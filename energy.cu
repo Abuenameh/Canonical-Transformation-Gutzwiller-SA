@@ -43,7 +43,7 @@ __host__ __device__ static inline T Sqr2(T x) {
 	return x * x * x * x;
 }
 
-template<class T> __host__ __device__ double energy0(const T *f, unsigned int n,
+template<class T> __host__ __device__ T energy0(const T *f, unsigned int n,
 	void *f_data) {
 #include "parms.cuh"
 #include "vars.cuh"
@@ -51,11 +51,83 @@ template<class T> __host__ __device__ double energy0(const T *f, unsigned int n,
 	return E;
 }
 
-template<class T> __host__ __device__ double energy1(const T *f, unsigned int n,
+template<class T> __host__ __device__ T energy1(const T *f, unsigned int n,
 	void *f_data) {
 #include "parms.cuh"
 #include "vars.cuh"
 #include "return1.cuh"
+	return E;
+}
+
+template<class T> __host__ __device__ T energy2(const T *f, unsigned int n,
+	void *f_data) {
+#include "parms.cuh"
+#include "vars.cuh"
+#include "return2.cuh"
+	return E;
+}
+
+template<class T> __host__ __device__ T energy3(const T *f, unsigned int n,
+	void *f_data) {
+#include "parms.cuh"
+#include "vars.cuh"
+#include "return3.cuh"
+	return E;
+}
+
+template<class T> __host__ __device__ T energy4(const T *f, unsigned int n,
+	void *f_data) {
+#include "parms.cuh"
+#include "vars.cuh"
+#include "return4.cuh"
+	return E;
+}
+
+template<class T> __host__ __device__ T energy5(const T *f, unsigned int n,
+	void *f_data) {
+#include "parms.cuh"
+#include "vars.cuh"
+#include "return5.cuh"
+	return E;
+}
+
+template<class T> __host__ __device__ T energy6(const T *f, unsigned int n,
+	void *f_data) {
+#include "parms.cuh"
+#include "vars.cuh"
+#include "return6.cuh"
+	return E;
+}
+
+template<class T> __host__ __device__ T energy7(const T *f, unsigned int n,
+	void *f_data) {
+#include "parms.cuh"
+#include "vars.cuh"
+#include "return7.cuh"
+	return E;
+}
+
+template<class T> __host__ __device__ T energy8(const T *f, unsigned int n,
+	void *f_data) {
+#include "parms.cuh"
+#include "vars.cuh"
+#include "return8.cuh"
+	return E;
+}
+
+template<class T> __host__ __device__ T energy9(const T *f, unsigned int n,
+	void *f_data) {
+#include "parms.cuh"
+#include "vars.cuh"
+#include "return9.cuh"
+	return E;
+}
+
+template<class T> __host__ __device__ T energy10(const T *f, unsigned int n,
+	void *f_data) {
+#include "parms.cuh"
+#include "vars.cuh"
+#include "return10.cuh"
 	return E;
 }
 
@@ -65,18 +137,18 @@ template<class T> __host__ __device__ double energy1(const T *f, unsigned int n,
 template<class T>
 	__host__ __device__ T Energy<T>::operator()(const T *f, unsigned int n,
 			void *f_data) const {
-		parameters* parms = (parameters*) f_data;
-		real* U = parms->U;
-		real* J = parms->J;
-		real mu = parms->mu;
-		real theta = parms->theta;
-		real costh = parms->costh;
-		real sinth = parms->sinth;
-		real cos2th = parms->cos2th;
-		real sin2th = parms->sin2th;
-
-#include "vars.cuh"
-#include "return0.cuh"
+//		parameters* parms = (parameters*) f_data;
+//		real* U = parms->U;
+//		real* J = parms->J;
+//		real mu = parms->mu;
+//		real theta = parms->theta;
+//		real costh = parms->costh;
+//		real sinth = parms->sinth;
+//		real cos2th = parms->cos2th;
+//		real sin2th = parms->sin2th;
+//
+//#include "vars.cuh"
+//#include "return0.cuh"
 
 //		for(int i = 0; i < 10; i++) {
 //			printf("%f\t", f[i]);
@@ -86,10 +158,23 @@ template<class T>
 //		printf("%f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f \n", E, norm1, norm2, norm3, norm4, norm5, norm6, norm7, norm8, norm9, norm10, norm11, norm12, norm13, norm14, norm15, norm16, norm17, norm18, norm19, norm20, norm21, norm22, norm23, norm24, norm25, norm26, norm27, norm28, norm29, norm30, norm31, norm32, norm33, norm34, norm35, norm36, norm37, norm38, norm39, norm40, norm41, norm42, norm43, norm44, norm45, norm46, norm47, norm48, norm49, norm50);
 //		printf("%f %f %f %f %f %f %f %f %f %f %f \n", E, norm31, norm32, norm33, norm34, norm35, norm36, norm37, norm38, norm39, norm40);
 //		printf("%f\n", E);
-		return E;
+//		return E;
 //#include "energyret.cuh"
 ////		return (75*f_0_2*f_10_2*J_0_2 - 1800*f_10_4*J_0_2 + 75*f_0_2*f_11_2*J_0_2 - 3600*f_10_2*f_11_2*J_0_2 - 1800*f_11_4*J_0_2 + 72*f_0_2*f_12_2*J_0_2 - 1050*f_10_2*f_12_2*J_0_2 - 1050*f_11_2*f_12_2*J_0_2 - 2520*f_12_4*J_0_2 + 72*f_0_2*f_13_2*J_0_2 - 1050*f_10_2*f_13_2*J_0_2 - 1050*f_11_2*f_13_2*J_0_2 - 5040*f_12_2*f_13_2*J_0_2 - 2520*f_13_4*J_0_2 + 70*f_0_2*f_14_2*J_0_2 + 5040*f_10_2*f_14_2*J_0_2 + 5040*f_11_2*f_14_2*J_0_2 + 70*f_0_2*f_15_2*J_0_2 + 5040*f_10_2*f_15_2*J_0_2 + 5040*f_11_2*f_15_2*J_0_2 + 75*f_10_2*f_1_2*J_0_2 + 75*f_11_2*f_1_2*J_0_2 + 72*f_12_2*f_1_2*J_0_2 + 72*f_13_2*f_1_2*J_0_2 + 70*f_14_2*f_1_2*J_0_2 + 70*f_15_2*f_1_2*J_0_2 + 128*f_10_2*f_2_2*J_0_2 + 128*f_11_2*f_2_2*J_0_2 + 110*f_12_2*f_2_2*J_0_2 + 110*f_13_2*f_2_2*J_0_2 + 168*f_14_2*f_2_2*J_0_2 + 168*f_15_2*f_2_2*J_0_2 - 120*f_2_4*J_0_2 + 128*f_10_2*f_3_2*J_0_2 + 128*f_11_2*f_3_2*J_0_2 + 110*f_12_2*f_3_2*J_0_2 + 110*f_13_2*f_3_2*J_0_2 + 168*f_14_2*f_3_2*J_0_2 + 168*f_15_2*f_3_2*J_0_2 - 240*f_2_2*f_3_2*J_0_2 - 120*f_3_4*J_0_2 + 240*f_0_2*f_4_2*J_0_2 + 270*f_10_2*f_4_2*J_0_2 + 270*f_11_2*f_4_2*J_0_2 + 192*f_12_2*f_4_2*J_0_2 + 192*f_13_2*f_4_2*J_0_2 + 315*f_14_2*f_4_2*J_0_2 + 315*f_15_2*f_4_2*J_0_2 + 240*f_1_2*f_4_2*J_0_2 - 90*f_2_2*f_4_2*J_0_2 - 90*f_3_2*f_4_2*J_0_2 - 360*f_4_4*J_0_2 + 240*f_0_2*f_5_2*J_0_2 + 270*f_10_2*f_5_2*J_0_2 + 270*f_11_2*f_5_2*J_0_2 + 192*f_12_2*f_5_2*J_0_2 + 192*f_13_2*f_5_2*J_0_2 + 315*f_14_2*f_5_2*J_0_2 + 315*f_15_2*f_5_2*J_0_2 + 240*f_1_2*f_5_2*J_0_2 - 90*f_2_2*f_5_2*J_0_2 - 90*f_3_2*f_5_2*J_0_2 - 720*f_4_2*f_5_2*J_0_2 - 360*f_5_4*J_0_2 + 90*f_0_2*f_6_2*J_0_2 + 2040*f_10_2*f_6_2*J_0_2 + 2040*f_11_2*f_6_2*J_0_2 + 405*f_12_2*f_6_2*J_0_2 + 405*f_13_2*f_6_2*J_0_2 + 560*f_14_2*f_6_2*J_0_2 + 560*f_15_2*f_6_2*J_0_2 + 90*f_1_2*f_6_2*J_0_2 + 640*f_2_2*f_6_2*J_0_2 + 640*f_3_2*f_6_2*J_0_2 - 240*f_4_2*f_6_2*J_0_2 - 240*f_5_2*f_6_2*J_0_2 - 720*f_6_4*J_0_2 + 90*f_0_2*f_7_2*J_0_2 + 2040*f_10_2*f_7_2*J_0_2 + 2040*f_11_2*f_7_2*J_0_2 + 405*f_12_2*f_7_2*J_0_2 + 405*f_13_2*f_7_2*J_0_2 + 560*f_14_2*f_7_2*J_0_2 + 560*f_15_2*f_7_2*J_0_2 + 90*f_1_2*f_7_2*J_0_2 + 640*f_2_2*f_7_2*J_0_2 + 640*f_3_2*f_7_2*J_0_2 - 240*f_4_2*f_7_2*J_0_2 - 240*f_5_2*f_7_2*J_0_2 - 1440*f_6_2*f_7_2*J_0_2 - 720*f_7_4*J_0_2 + 80*f_0_2*f_8_2*J_0_2 - 720*f_10_2*f_8_2*J_0_2 - 720*f_11_2*f_8_2*J_0_2 + 3040*f_12_2*f_8_2*J_0_2 + 3040*f_13_2*f_8_2*J_0_2 + 1050*f_14_2*f_8_2*J_0_2 + 1050*f_15_2*f_8_2*J_0_2 + 80*f_1_2*f_8_2*J_0_2 + 165*f_2_2*f_8_2*J_0_2 + 165*f_3_2*f_8_2*J_0_2 + 1240*f_4_2*f_8_2*J_0_2 + 1240*f_5_2*f_8_2*J_0_2 - 450*f_6_2*f_8_2*J_0_2 - 450*f_7_2*f_8_2*J_0_2 - 1200*f_8_4*J_0_2 + 80*f_0_2*f_9_2*J_0_2 - 720*f_10_2*f_9_2*J_0_2 - 720*f_11_2*f_9_2*J_0_2 + 3040*f_12_2*f_9_2*J_0_2 + 3040*f_13_2*f_9_2*J_0_2 + 1050*f_14_2*f_9_2*J_0_2 + 1050*f_15_2*f_9_2*J_0_2 + 80*f_1_2*f_9_2*J_0_2 + 165*f_2_2*f_9_2*J_0_2 + 165*f_3_2*f_9_2*J_0_2 + 1240*f_4_2*f_9_2*J_0_2 + 1240*f_5_2*f_9_2*J_0_2 - 450*f_6_2*f_9_2*J_0_2 - 450*f_7_2*f_9_2*J_0_2 - 2400*f_8_2*f_9_2*J_0_2 - 1200*f_9_4*J_0_2 + 60*(f_0_2 + f_10_2 + f_11_2 + f_12_2 + f_13_2 + f_14_2 + f_15_2 + f_1_2 + f_2_2 + f_3_2 + f_4_2 + f_5_2 + f_6_2 + f_7_2 + f_8_2 + f_9_2)*(10*f_10_2 + 10*f_11_2 + 3*(5*f_12_2 + 5*f_13_2 + 7*(f_14_2 + f_15_2)) + f_4_2 + f_5_2 + 3*f_6_2 + 3*f_7_2 + 6*f_8_2 + 6*f_9_2)*U_0_2 - 60*((f_0_2 + f_10_2 + f_11_2 + f_12_2 + f_13_2 + f_14_2 + f_15_2 + f_1_2 + f_2_2 + f_3_2 + f_4_2 + f_5_2 + f_6_2 + f_7_2 + f_8_2 + f_9_2)*(5*f_10_2 + 5*f_11_2 + 6*f_12_2 + 6*f_13_2 + 7*(f_14_2 + f_15_2) + f_2_2 + f_3_2 + 2*f_4_2 + 2*f_5_2 + 3*f_6_2 + 3*f_7_2 + 4*f_8_2 + 4*f_9_2)*mu + (6*f_10_2*f_12_2 + 6*f_11_2*f_12_2 + 6*f_10_2*f_13_2 + 6*f_11_2*f_13_2 + 7*f_12_2*f_14_2 + 7*f_13_2*f_14_2 + 7*(f_12_2 + f_13_2)*f_15_2 + f_0_2*(f_2_2 + f_3_2) + f_1_2*(f_2_2 + f_3_2) + 2*f_2_2*f_4_2 + 2*f_3_2*f_4_2 + 2*f_2_2*f_5_2 + 2*f_3_2*f_5_2 + 3*f_4_2*f_6_2 + 3*f_5_2*f_6_2 + 3*f_4_2*f_7_2 + 3*f_5_2*f_7_2 + 5*f_10_2*f_8_2 + 5*f_11_2*f_8_2 + 4*f_6_2*f_8_2 + 4*f_7_2*f_8_2 + 5*f_10_2*f_9_2 + 5*f_11_2*f_9_2 + 4*f_6_2*f_9_2 + 4*f_7_2*f_9_2)*J[0])*U[0])/(60.*Sqr(f_0_2 + f_10_2 + f_11_2 + f_12_2 + f_13_2 + f_14_2 + f_15_2 + f_1_2 + f_2_2 + f_3_2 + f_4_2 + f_5_2 + f_6_2 + f_7_2 + f_8_2 + f_9_2)*U[0]);
-	}
+	real E = 0;
+	E += energy0(f, n, f_data);
+	E += energy1(f, n, f_data);
+	E += energy2(f, n, f_data);
+	E += energy3(f, n, f_data);
+	E += energy4(f, n, f_data);
+	E += energy5(f, n, f_data);
+	E += energy6(f, n, f_data);
+	E += energy7(f, n, f_data);
+	E += energy8(f, n, f_data);
+	E += energy9(f, n, f_data);
+	E += energy10(f, n, f_data);
+	return E;
+}
 
 //template<class T>
 //	__host__ __device__ T Energy<T>::operator()(const T *x, unsigned int n,
