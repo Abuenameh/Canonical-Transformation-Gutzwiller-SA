@@ -17,7 +17,7 @@ int main(int argc, char** argv) {
 	time_t start = time(NULL);
 
 	real T_0 = 1000, T_min = 0.01;
-	const unsigned int n = 2 * L * dim, N = 1;//00;
+	const unsigned int n = 2 * L * dim, N = 10;
 	const real rho = 0.99;
 	size_t sizeFD = n * sizeof(real);
 	real *lb, *ub, *cusimann_minimum = (real*) malloc(sizeFD),
